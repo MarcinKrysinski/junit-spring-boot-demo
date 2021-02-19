@@ -17,8 +17,8 @@ public class MoneyService {
      * @param amountInUSD wartość w USD
      * @return wartość w PLN
      */
-    Float getInPLN(Float amountInUSD) {
-        Float rate = currencyService.getRate();
+    Float getInPLN(Float amountInUSD, String currency) {
+        Float rate = currencyService.getRate(currency);
 
         return amountInUSD * rate;
     }

@@ -13,8 +13,8 @@ public class CurrencyService {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    public Float getRate() {
-        String rateJSON = getRateAsJSON();
+    public Float getRate(String currency) {
+        String rateJSON = getRateAsJSON(currency);
         String midNode = rateJSON.split("mid\":")[1].split("}")[0];
 
         return Float.parseFloat(midNode);
@@ -25,8 +25,8 @@ public class CurrencyService {
      *
      * @return JSON
      */
-    public String getRateAsJSON() {
-        String url = "http://api.nbp.pl/api/exchangerates/rates/a/usd?format=json";
+    public String getRateAsJSON(String currency) {
+        String url = String.format("http://api.nbp.pl/api/exchangerates/rates/a/%s?format=json", currency);
         return this.restTemplate.getForObject(url, String.class);
     }
 }

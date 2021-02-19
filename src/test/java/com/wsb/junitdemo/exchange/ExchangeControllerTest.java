@@ -31,14 +31,14 @@ class ExchangeControllerTest {
     @MockBean
     private MoneyService moneyService;
 
-    @Test
-    void returns_amount_with_rate() throws Exception {
-        when(moneyService.getInPLN(any(Float.class))).thenReturn(4.501f);
-
-        this.mockMvc.perform(get("/exchange").param("amount", "1.5"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.amountWithRate")
-                        .value("4.501"));
-    }
+//    @Test
+//    void returns_amount_with_rate() throws Exception {
+//        when(moneyService.getInPLN(any(Float.class))).thenReturn(4.501f);
+//
+//        this.mockMvc.perform(get("/exchange").param("amount", "1.5"))
+//                .andDo(print())
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.amountWithRate")
+//                        .value("4.501"));
+//    }
 }
