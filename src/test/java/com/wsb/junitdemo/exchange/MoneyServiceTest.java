@@ -22,13 +22,13 @@ class MoneyServiceTest {
     @InjectMocks
     MoneyService moneyService;
 
-//    @Test
-//    void returns_amount_in_pln() {
-//        when(currencyService.getRate()).thenReturn(1.5f);
-//
-//        assertAll("exchanges",
-//                () -> assertEquals(3f, moneyService.getInPLN(2f)),
-//                () -> assertEquals(0, moneyService.getInPLN(0f))
-//        );
-//    }
+    @Test
+    void returns_amount_in_pln() {
+        when(currencyService.getRate("PLN")).thenReturn(1.5f);
+
+        assertAll("exchanges",
+                () -> assertEquals(3f, moneyService.getInPLN(2f, "PLN")),
+                () -> assertEquals(0, moneyService.getInPLN(0f, "PLN"))
+        );
+    }
 }
